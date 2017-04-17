@@ -1,0 +1,2 @@
+# BaseProject
+一个Android的基础项目，里面会对项目经常用到的如BaseActivity，BaseFragment，网络请求等进行一些基本封装，方便以后使用，项目会逐步更新
