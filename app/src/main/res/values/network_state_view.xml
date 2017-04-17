@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="empty_image" type="id" />
+    <item name="empty_text" type="id" />
+
+    <item name="error_image" type="id" />
+    <item name="error_text" type="id" />
+
+    <item name="no_network_image" type="id" />
+    <item name="no_network_text" type="id" />
+
+    <item name="refresh_view" type="id" />
+
+    <attr name="styleNetworkStateView" format="reference" />
+
+    <!-- 网络加载状态View -->
+    <declare-styleable name="NetworkStateView">
+
+        <!-- 加载中的布局id -->
+        <attr name="loadingView" format="reference" />
+
+        <!-- 加载错误的布局id -->
+        <attr name="errorView" format="reference" />
+        <!-- 加载错误的布局图片 -->
+        <attr name="nsvErrorImage" format="reference" />
+        <!-- 加载错误的布局文字 -->
+        <attr name="nsvErrorText" format="string" />
+
+        <!-- 没有数据的布局id -->
+        <attr name="emptyView" format="reference" />
+        <!-- 没有数据的布局图片 -->
+        <attr name="nsvEmptyImage" format="reference" />
+        <!-- 没有数据的布局文字 -->
+        <attr name="nsvEmptyText" format="string" />
+
+        <!-- 没有网络的布局id -->
+        <attr name="noNetworkView" format="reference" />
+        <!-- 没有数据的布局图片 -->
+        <attr name="nsvNoNetworkImage" format="reference" />
+        <!-- 没有数据的布局文字 -->
+        <attr name="nsvNoNetworkText" format="string" />
+
+        <!-- 刷新的ImageView图片id -->
+        <attr name="nsvRefreshImage" format="reference"/>
+
+        <!-- 文字大小 -->
+        <attr name="nsvTextSize" format="dimension" />
+        <!-- 文字颜色 -->
+        <attr name="nsvTextColor" format="color" />
+    </declare-styleable>
+
+    <style name="NetworkStateView">
+
+    </style>
+
+    <!-- NetworkStateView样式 -->
+    <style name="NetworkStateView.Style">
+        <item name="loadingView">@layout/view_loading</item>
+        <item name="errorView">@layout/view_network_error</item>
+        <item name="nsvErrorImage">@drawable/ic_net_error</item>
+        <item name="nsvErrorText">网络异常~</item>
+        <item name="emptyView">@layout/view_empty</item>
+        <item name="nsvEmptyImage">@drawable/ic_empty</item>
+        <item name="nsvEmptyText">没有数据~</item>
+        <item name="noNetworkView">@layout/view_no_network</item>
+        <item name="nsvNoNetworkImage">@drawable/ic_no_network</item>
+        <item name="nsvNoNetworkText">没有网络~</item>
+        <item name="nsvRefreshImage">@drawable/ic_refresh</item>
+        <item name="nsvTextSize">14sp</item>
+        <item name="nsvTextColor">#8a000000</item>
+    </style>
+
+</resources>

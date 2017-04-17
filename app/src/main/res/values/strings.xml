@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BaseProject</string>
+
+    <!-- 加载状态相关 -->
+    <string name="view_empty">没有数据~</string>
+    <string name="view_network_error">网络异常~</string>
+    <string name="view_no_network">没有网络~</string>
 </resources>
