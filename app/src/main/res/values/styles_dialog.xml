@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Progressbar加载背景样式 -->
+    <style name="dialog_transparent_style" parent="@android:style/Theme.Dialog">
+        <!-- Dialog的windowFrame 无边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 浮动与Activity窗口之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 没有title -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景色 -->
+        <item name="android:windowBackground">@drawable/dialog_gray_dark_bg</item>
+        <!-- 背景模糊显示 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- 自定义对话框样式 -->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+
+        <!-- Dialog的windowFrame 无边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 浮动与Activity窗口之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 没有title -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景色为透明 -->
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 窗口背景色为透明，不设置这个属性，对话框背景会出现四个角 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景模糊显示 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 设置背景透明度 -->
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+
+    <!-- 自定义对话框样式 -->
+    <style name="dialog_no_background" parent="@android:style/Theme.Dialog">
+
+        <!-- Dialog的windowFrame 无边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 浮动与Activity窗口之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 没有title -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景色为透明 -->
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 窗口背景色为透明，不设置这个属性，对话框背景会出现四个角 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景模糊显示 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 设置背景透明度 -->
+        <!--  <item name="android:backgroundDimAmount">0.4</item> -->
+    </style>
+
+</resources>
