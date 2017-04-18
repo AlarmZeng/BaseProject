@@ -1,29 +1,28 @@
 package com.zht.baseproject.base;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.zht.baseproject.R;
 import com.zht.baseproject.ui.widget.NetworkStateView;
-import com.zht.baseproject.utils.ActivityUtils;
 import com.zht.baseproject.utils.ProgressDialogUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by ZHT on 2017/4/17.
- * 基类Activity
+ * Created by ZHT on 2017/4/18.
+ * 基类Fragment
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements NetworkStateView.OnRefreshListener {
+public abstract class BaseFragment extends Fragment implements NetworkStateView.OnRefreshListener {
+
+    private View mView;
 
     private Unbinder unbinder;
 
@@ -31,40 +30,41 @@ public abstract class BaseActivity extends AppCompatActivity implements NetworkS
 
     private NetworkStateView networkStateView;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        unbinder = ButterKnife.bind(this);
-        ActivityUtils.addActivity(this);
-        initDialog();
-        afterCreate(savedInstanceState);
-    }
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.fragment_base, container, false);
 
-    @SuppressLint("InflateParams")
-    @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        View view = getLayoutInflater().inflate(R.layout.activity_base, null);
-        //设置填充activity_base布局
-        super.setContentView(view);
-
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            view.setFitsSystemWindows(true);
+        ViewGroup parent = (ViewGroup) mView.getParent();
+        if (null != parent) {
+            parent.removeView(mView);
         }
 
-        //加载子类Activity的布局
-        initDefaultView(layoutResID);
+        addChildView(inflater);
+
+        unbinder = ButterKnife.bind(this, mView);
+
+        initDialog();
+
+        afterCreate(savedInstanceState);
+
+        return mView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     /**
-     * 初始化默认布局的View
-     * @param layoutResId 子View的布局id
+     * 添加子Fragment的布局文件
+     * @param inflater
      */
-    private void initDefaultView(int layoutResId) {
-        networkStateView = (NetworkStateView) findViewById(R.id.nsv_state_view);
-        FrameLayout container = (FrameLayout) findViewById(R.id.fl_activity_child_container);
-        View childView = LayoutInflater.from(this).inflate(layoutResId, null);
-        container.addView(childView, 0);
+    private void addChildView(LayoutInflater inflater) {
+        networkStateView = (NetworkStateView) mView.findViewById(R.id.nsv_state_view);
+        FrameLayout container = (FrameLayout) mView.findViewById(R.id.fl_fragment_child_container);
+        View child = inflater.inflate(getLayoutId(), null);
+        container.addView(child, 0);
     }
 
     protected abstract int getLayoutId();
@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetworkS
     protected abstract void afterCreate(Bundle savedInstanceState);
 
     private void initDialog() {
-        progressDialog = new ProgressDialogUtils(this, R.style.dialog_transparent_style);
+        progressDialog = new ProgressDialogUtils(getActivity(), R.style.dialog_transparent_style);
     }
 
     /**
@@ -190,9 +190,8 @@ public abstract class BaseActivity extends AppCompatActivity implements NetworkS
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         unbinder.unbind();
-        ActivityUtils.removeActivity(this);
     }
 }

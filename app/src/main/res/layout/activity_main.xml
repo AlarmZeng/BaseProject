@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.zht.baseproject.ui.MainActivity">
+    tools:context="com.zht.baseproject.ui.activity.MainActivity">
 
     <Button
         android:id="@+id/bt_loading"

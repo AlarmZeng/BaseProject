@@ -1,4 +1,4 @@
-package com.zht.baseproject.ui;
+package com.zht.baseproject.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
