@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 
 /**
  * Created by ZHT on 2017/4/18.
- * 基类Fragment
+ * Fragment基类
  */
 
 public abstract class BaseFragment extends Fragment implements NetworkStateView.OnRefreshListener {

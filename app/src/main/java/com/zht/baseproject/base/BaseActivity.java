@@ -20,7 +20,7 @@ import butterknife.Unbinder;
 
 /**
  * Created by ZHT on 2017/4/17.
- * 基类Activity
+ * Activity基类
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements NetworkStateView.OnRefreshListener {
