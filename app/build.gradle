@@ -1,20 +1,33 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.zht.baseproject"
-        minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
             minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled true
+            useProguard true
+            //移除没用的资源文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
         }
     }
 }
@@ -24,11 +37,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
     /*View注解 ButterKnife*/
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    /*RxJava & RxAndroid & Retrofit & OkHttp*/
+    compile 'io.reactivex:rxjava:1.2.9'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
 }

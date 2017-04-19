@@ -21,3 +21,18 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {  //将项目的一些基本配置写在根目录的gradle文件中，方便统一更改
+
+    //sdk和tools
+    minSdkVersion = 14
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
+
+    versionCode = 1
+    versionName = '1.0'
+
+    //APP项目依赖
+    supportLibraryVersion = '25.3.1'
+}
