@@ -10,7 +10,7 @@ import rx.schedulers.Schedulers;
 
 
 /**
- * Created by ZHT on 2017/4/12.
+ * Created by ZHT on 2017/4/19.
  * 对错误进行统一处理，并对返回的数据HttpResult中获取Results
  */
 
