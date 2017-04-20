@@ -31,7 +31,7 @@ public class WebViewActivity extends BaseActivity implements WebViewContract.Vie
 
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
-
+        initWebView();
     }
 
     private void initWebView() {
@@ -87,11 +87,13 @@ public class WebViewActivity extends BaseActivity implements WebViewContract.Vie
 
     @Override
     public void showNoNetwork() {
-
+        showNoNetworkView();
     }
 
     @Override
     public void addImageClickListener() {
+        //遍历img节点，自行添加onclick方法
+        //该方法的作用是在图片点击时调用本地的Java接口并传递url过去
         webView.loadUrl("javascript:(function(){" +
                 "var objs = document.getElementsByTagName(\"img\");" +
                 "for(var i=0;i<objs.length;i++)" +
@@ -101,6 +103,7 @@ public class WebViewActivity extends BaseActivity implements WebViewContract.Vie
                 "}" +
                 "})()");
 
+        //这个是遍历a节点，并传递节点a的属性，可用于页面跳转
         webView.loadUrl("javascript:(function(){" +
                 "var objs =document.getElementsByTagName(\"a\");" +
                 "for(var i=0;i<objs.length;i++)" +
