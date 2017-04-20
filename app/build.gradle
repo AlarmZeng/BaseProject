@@ -43,14 +43,16 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
-    /*View注解 ButterKnife*/
+    /* View注解 ButterKnife */
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    /*RxJava & RxAndroid & Retrofit & OkHttp*/
+    /* RxJava & RxAndroid & Retrofit & OkHttp */
     compile 'io.reactivex:rxjava:1.2.9'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    /* 图片加载 Glide */
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

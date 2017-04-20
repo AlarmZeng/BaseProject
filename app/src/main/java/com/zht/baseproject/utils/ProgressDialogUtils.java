@@ -93,7 +93,7 @@ public class ProgressDialogUtils {
 
         if (mDialog != null && !mDialog.isShowing()) {
             pb_loadProgress.setVisibility(View.GONE);
-            iv_loadImage.setBackgroundResource(R.drawable.icon_load_success_white);
+            iv_loadImage.setBackgroundResource(R.drawable.ic_load_success_white);
             iv_loadImage.setVisibility(View.VISIBLE);
             tv_loadText.setText(message);
             tv_loadText.setVisibility(View.VISIBLE);
@@ -132,7 +132,7 @@ public class ProgressDialogUtils {
 
         if (mDialog != null && !mDialog.isShowing()) {
             pb_loadProgress.setVisibility(View.GONE);
-            iv_loadImage.setBackgroundResource(R.drawable.icon_load_fail_white);
+            iv_loadImage.setBackgroundResource(R.drawable.ic_load_fail_white);
             iv_loadImage.setVisibility(View.VISIBLE);
             tv_loadText.setText(message);
             tv_loadText.setVisibility(View.VISIBLE);
