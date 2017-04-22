@@ -6,11 +6,22 @@ import android.widget.Button;
 
 import com.zht.baseproject.R;
 import com.zht.baseproject.base.BaseActivity;
+import com.zht.baseproject.entity.GankEntity;
+import com.zht.baseproject.http.HttpFactory;
+import com.zht.baseproject.http.HttpResult;
+import com.zht.baseproject.http.HttpTransformer;
+import com.zht.baseproject.utils.LogUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.functions.Action0;
 
 public class MainActivity extends BaseActivity {
+
+    private static final String TAG = "MainActivity";
 
     @BindView(R.id.bt_loading)
     Button bt_loading;
@@ -26,6 +37,35 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
+
+
+        HttpFactory.getHttpApiSingleton()
+                .getCategoryData("Android", 10, 1)
+                .compose(new HttpTransformer<HttpResult<List<GankEntity>>, List<GankEntity>>())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        showLoadingView();
+                    }
+                })
+                .subscribe(new Subscriber<List<GankEntity>>() {
+                    @Override
+                    public void onCompleted() {
+                        LogUtils.d(TAG, "Completed");
+                        showContentView();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtils.d(TAG, "OnError, Error is " + e.toString());
+                        showErrorView();
+                    }
+
+                    @Override
+                    public void onNext(List<GankEntity> gankEntities) {
+                        
+                    }
+                });
 
     }
 
