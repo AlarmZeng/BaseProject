@@ -38,7 +38,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
 
-
         HttpFactory.getHttpApiSingleton()
                 .getCategoryData("Android", 10, 1)
                 .compose(new HttpTransformer<HttpResult<List<GankEntity>>, List<GankEntity>>())
@@ -63,7 +62,7 @@ public class MainActivity extends BaseActivity {
 
                     @Override
                     public void onNext(List<GankEntity> gankEntities) {
-                        
+
                     }
                 });
 
