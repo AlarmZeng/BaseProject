@@ -3,6 +3,7 @@ package com.zht.baseproject;
 import android.app.Application;
 import android.os.Handler;
 
+import com.zht.baseproject.utils.FileUtils;
 import com.zht.baseproject.utils.LogUtils;
 
 /**
@@ -25,6 +26,9 @@ public class App extends Application {
 
         //设置是否打印日志
         LogUtils.setIsLog(BuildConfig.LOG_DEBUG);
+
+        //创建应用对应的文件夹
+        FileUtils.init(this);
     }
 
     public static App getApplication() {
