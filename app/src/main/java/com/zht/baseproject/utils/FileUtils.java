@@ -22,8 +22,6 @@ public class FileUtils {
 
     private static final String CACHE = "/cache/";
 
-    private static final String IMAGE = "/image/";
-
     /**
      * 在初始化时创建APP所需要的基础文件夹
      * 在6.0以上版本时需要进行权限申请
@@ -32,7 +30,6 @@ public class FileUtils {
     public static void init(Context context) {
         LogUtils.d(TAG, "Root path is " + ROOT_PATH);
         createFileDir(context, CACHE);
-        createFileDir(context, IMAGE);
     }
 
     /**

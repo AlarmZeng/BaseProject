@@ -214,7 +214,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetworkS
 
         mPermissionListener = listener;
         List<String> permissionList = new ArrayList<>();
-        for (String permission : permissionList) {
+        for (String permission : permissions) {
             //权限没有授权
             if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionList.add(permission);

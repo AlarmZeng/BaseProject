@@ -1,6 +1,7 @@
 package com.zht.baseproject;
 
 import android.app.Application;
+import android.os.Build;
 import android.os.Handler;
 
 import com.zht.baseproject.utils.FileUtils;
@@ -27,8 +28,11 @@ public class App extends Application {
         //设置是否打印日志
         LogUtils.setIsLog(BuildConfig.LOG_DEBUG);
 
-        //创建应用对应的文件夹
-        FileUtils.init(this);
+        //在6.0(M)版本下直接创建应用对应的文件夹
+        //在6.0(M)版本以上的需要先进行权限申请
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            FileUtils.init(this);
+        }
     }
 
     public static App getApplication() {

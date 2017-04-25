@@ -6,18 +6,9 @@ import android.widget.Button;
 
 import com.zht.baseproject.R;
 import com.zht.baseproject.base.BaseActivity;
-import com.zht.baseproject.entity.GankEntity;
-import com.zht.baseproject.http.HttpFactory;
-import com.zht.baseproject.http.HttpResult;
-import com.zht.baseproject.http.HttpTransformer;
-import com.zht.baseproject.utils.LogUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.functions.Action0;
 
 public class MainActivity extends BaseActivity {
 
@@ -38,7 +29,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
 
-        HttpFactory.getHttpApiSingleton()
+        /*HttpFactory.getHttpApiSingleton()
                 .getCategoryData("Android", 10, 1)
                 .compose(new HttpTransformer<HttpResult<List<GankEntity>>, List<GankEntity>>())
                 .doOnSubscribe(new Action0() {
@@ -64,7 +55,7 @@ public class MainActivity extends BaseActivity {
                     public void onNext(List<GankEntity> gankEntities) {
 
                     }
-                });
+                });*/
 
     }
 
