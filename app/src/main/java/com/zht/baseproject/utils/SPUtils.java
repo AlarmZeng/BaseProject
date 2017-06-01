@@ -62,6 +62,27 @@ public class SPUtils {
     }
 
     /**
+     * 保存long类型配置信息
+     * @param key
+     * @param value
+     */
+    public static void saveLong(String key, long value) {
+        getSharedPreferences().edit()
+                .putLong(key, value)
+                .apply();
+    }
+
+    /**
+     * 获取long类型配置信息
+     * @param key
+     * @param defValue
+     * @return
+     */
+    public static long getLong(String key, Long defValue) {
+        return getSharedPreferences().getLong(key, defValue);
+    }
+
+    /**
      * 保存String类型配置信息
      * @param key
      * @param value

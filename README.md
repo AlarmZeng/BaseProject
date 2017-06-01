@@ -14,4 +14,6 @@
 
 网络请求框架将会采用 RxJava + Retrofit + OkHttp的方式，在网络请求中会对三者进行一些简单的配合封装
 
+在网络请求示例中，会用到[Gank](http://gank.io/)的API，在此表示感谢！
+
 

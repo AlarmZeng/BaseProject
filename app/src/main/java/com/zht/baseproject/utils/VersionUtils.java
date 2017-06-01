@@ -7,6 +7,7 @@ import com.zht.baseproject.App;
 
 /**
  * Created by ZHT on 2017/6/1.
+ * 版本相关工具类
  */
 
 public class VersionUtils {
@@ -25,6 +26,10 @@ public class VersionUtils {
         }
 
         return info;
+    }
+
+    public static String getPackageName() {
+        return getPackageInfo().packageName;
     }
 
     /**
