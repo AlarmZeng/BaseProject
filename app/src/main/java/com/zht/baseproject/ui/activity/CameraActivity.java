@@ -2,6 +2,7 @@ package com.zht.baseproject.ui.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.zht.baseproject.utils.CameraUtils.takePhotoUri;
 
 /**
  * Created by ZHT on 2017/6/2.
@@ -67,6 +66,7 @@ public class CameraActivity extends BaseActivity {
                 break;
 
             case R.id.bt_album:
+                CameraUtils.albumChoose(CameraActivity.this);
                 break;
         }
     }
@@ -82,7 +82,8 @@ public class CameraActivity extends BaseActivity {
                     break;
 
                 case CameraUtils.CODE_TAKE_PHOTO_ZOOM :
-                    if (null != takePhotoUri) {
+
+                    if (null != CameraUtils.takePhotoUri) {
                         /*Bitmap bitmap = BitmapUtils.decodeUriAsBitmap(takePhotoUri);
                         if (bitmap == null) {
                             return;
@@ -90,8 +91,33 @@ public class CameraActivity extends BaseActivity {
                             iv_photo.setImageBitmap(bitmap);
                         }*/
 
-                        ImageLoader.loadImageWithUri(CameraActivity.this, iv_photo, takePhotoUri);
+                        ImageLoader.loadImageWithUri(CameraActivity.this, iv_photo, CameraUtils.takePhotoUri);
                     }
+
+                    break;
+
+                case CameraUtils.CODE_ALBUM_CHOOSE :
+
+                    /*if (null != data) {
+                        CameraUtils.albumChooseZoom(CameraActivity.this, data.getData());
+                    }*/
+
+                    if (Build.VERSION.SDK_INT >= 19) {
+                        // 4.4以上系统使用这个方法处理图片
+                        CameraUtils.handleImageOnKitKat(CameraActivity.this, data, iv_photo);
+                    } else {
+                        //4.4一下系统使用这个方法处理图片
+                        CameraUtils.handleImageBeforeKitKat(CameraActivity.this, data, iv_photo);
+                    }
+
+                    break;
+
+                case CameraUtils.CODE_ALBUM_CHOOSE_ZOOM :
+
+                    if (null != CameraUtils.albumPhotonUri) {
+                        ImageLoader.loadImageWithUri(CameraActivity.this, iv_photo, CameraUtils.albumPhotonUri);
+                    }
+
                     break;
             }
         }
