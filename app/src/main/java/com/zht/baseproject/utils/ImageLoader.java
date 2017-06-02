@@ -1,6 +1,7 @@
 package com.zht.baseproject.utils;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -124,6 +125,14 @@ public class ImageLoader {
                 .load(imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .override(width, height)
+                .into(imageView);
+    }
+
+    public static void loadImageWithUri(Context context, ImageView imageView, Uri uri) {
+        Glide.with(context)
+                .load(uri)
+                .asBitmap()
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
     }
 

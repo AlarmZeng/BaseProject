@@ -1,5 +1,6 @@
 package com.zht.baseproject.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,8 @@ public class MainActivity extends BaseActivity {
     Button bt_success;
     @BindView(R.id.bt_fail)
     Button bt_fail;
+    @BindView(R.id.bt_camera_activity)
+    Button bt_cameraActivity;
 
     @Override
     protected int getLayoutId() {
@@ -59,17 +62,24 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.bt_loading, R.id.bt_success, R.id.bt_fail})
+    @OnClick({R.id.bt_loading, R.id.bt_success, R.id.bt_fail, R.id.bt_camera_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
             case R.id.bt_loading:
                 showProgressDialog();
                 break;
+
             case R.id.bt_success:
                 showProgressSuccess("加载成功");
                 break;
+
             case R.id.bt_fail:
                 showProgressFail("加载失败");
+                break;
+
+            case R.id.bt_camera_activity:
+                startActivity(new Intent(this, CameraActivity.class));
                 break;
         }
     }
