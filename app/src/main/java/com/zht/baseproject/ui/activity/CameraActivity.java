@@ -104,10 +104,10 @@ public class CameraActivity extends BaseActivity {
 
                     if (Build.VERSION.SDK_INT >= 19) {
                         // 4.4以上系统使用这个方法处理图片
-                        CameraUtils.handleImageOnKitKat(CameraActivity.this, data, iv_photo);
+                        CameraUtils.handleImageOnKitKat(CameraActivity.this, data);
                     } else {
                         //4.4一下系统使用这个方法处理图片
-                        CameraUtils.handleImageBeforeKitKat(CameraActivity.this, data, iv_photo);
+                        CameraUtils.handleImageBeforeKitKat(CameraActivity.this, data);
                     }
 
                     break;
