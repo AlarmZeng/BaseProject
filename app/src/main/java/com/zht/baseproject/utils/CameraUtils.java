@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.widget.ImageView;
 
 import java.io.File;
 
@@ -79,6 +78,11 @@ public class CameraUtils {
         activity.startActivityForResult(intent, CODE_ALBUM_CHOOSE);
     }
 
+    /**
+     * 裁剪相册选择的图片
+     * @param activity
+     * @param uri
+     */
     public static void albumChooseZoom(Activity activity, Uri uri) {
         if (null != uri) {
 
@@ -110,7 +114,7 @@ public class CameraUtils {
     }
 
     @TargetApi(19)
-    public static void handleImageOnKitKat(Activity activity, Intent data, ImageView imageView) {
+    public static void handleImageOnKitKat(Activity activity, Intent data) {
 //        String imagePath = null;
         Uri uri = data.getData();
         if (DocumentsContract.isDocumentUri(activity, uri)) {
@@ -136,7 +140,7 @@ public class CameraUtils {
         albumChooseZoom(activity, uri);
     }
 
-    public static void handleImageBeforeKitKat(Activity activity, Intent data, ImageView imageView) {
+    public static void handleImageBeforeKitKat(Activity activity, Intent data) {
         Uri uri = data.getData();
 //        String imagePath = getImagePath(activity, uri, null);
 
