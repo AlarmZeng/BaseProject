@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.WindowManager;
 
 import com.zht.baseproject.App;
@@ -79,6 +80,7 @@ public class UIUtils {
      */
     public static int dp2px(float dp) {
         return (int) (getResources().getDisplayMetrics().density * dp + 0.5f);
+//        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 
     /**
@@ -88,6 +90,10 @@ public class UIUtils {
      */
     public static int px2dp(float px) {
         return (int) (px / getResources().getDisplayMetrics().density + 0.5f);
+    }
+
+    public static int sp2px(float sp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
 
     public static DisplayMetrics getDisplayMetrics() {
