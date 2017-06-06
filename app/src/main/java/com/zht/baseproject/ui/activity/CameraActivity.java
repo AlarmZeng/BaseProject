@@ -84,23 +84,12 @@ public class CameraActivity extends BaseActivity {
                 case CameraUtils.CODE_TAKE_PHOTO_ZOOM :
 
                     if (null != CameraUtils.takePhotoUri) {
-                        /*Bitmap bitmap = BitmapUtils.decodeUriAsBitmap(takePhotoUri);
-                        if (bitmap == null) {
-                            return;
-                        } else {
-                            iv_photo.setImageBitmap(bitmap);
-                        }*/
-
                         ImageLoader.loadImageWithUri(CameraActivity.this, iv_photo, CameraUtils.takePhotoUri);
                     }
 
                     break;
 
                 case CameraUtils.CODE_ALBUM_CHOOSE :
-
-                    /*if (null != data) {
-                        CameraUtils.albumChooseZoom(CameraActivity.this, data.getData());
-                    }*/
 
                     if (Build.VERSION.SDK_INT >= 19) {
                         // 4.4以上系统使用这个方法处理图片

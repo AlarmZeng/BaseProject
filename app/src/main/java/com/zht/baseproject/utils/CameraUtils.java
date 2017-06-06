@@ -115,7 +115,6 @@ public class CameraUtils {
 
     @TargetApi(19)
     public static void handleImageOnKitKat(Activity activity, Intent data) {
-//        String imagePath = null;
         Uri uri = data.getData();
         if (DocumentsContract.isDocumentUri(activity, uri)) {
             // 如果是document类型的Uri，则通过document id进行处理
@@ -124,17 +123,14 @@ public class CameraUtils {
                 String id = docId.split(":")[1]; // 解析出数字格式的id
                 String selection = MediaStore.Images.Media._ID + "=" + id;
                 albumPhotonUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-//                imagePath = getImagePath(activity, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
             } else if ("com.android.provides.downloads.documents".equals(uri.getAuthority())) {
                 Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),
                         Long.valueOf(docId));
                 albumPhotonUri = contentUri;
-//                imagePath = getImagePath(activity, contentUri, null);
             }
         } else if ("content".equalsIgnoreCase(uri.getScheme())) {
             // 如果不是document类型的uri，则使用普通方式处理
             albumPhotonUri = uri;
-//            imagePath = getImagePath(activity, uri, null);
         }
 
         albumChooseZoom(activity, uri);
@@ -142,7 +138,6 @@ public class CameraUtils {
 
     public static void handleImageBeforeKitKat(Activity activity, Intent data) {
         Uri uri = data.getData();
-//        String imagePath = getImagePath(activity, uri, null);
 
         albumChooseZoom(activity, uri);
     }
